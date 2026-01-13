@@ -69,9 +69,12 @@ export default function Home() {
               <WelcomeScreen modelName={currentModelName} />
             ) : (
               <>
-                {messages.map((message) => (
-                  <ChatMessage key={message.id} message={message} />
-                ))}
+                {messages
+                  .filter((message) => message.role !== "system")
+                  .filter((message): message is typeof message & { role: "user" | "assistant" } => message.role !== "system")
+                  .map((message) => (
+                    <ChatMessage key={message.id} message={message} />
+                  ))}
 
                 {isLoading && (
                   <div className="flex justify-start gap-3 animate-in fade-in slide-in-from-bottom-4">

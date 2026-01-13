@@ -1,5 +1,5 @@
 interface WelcomeScreenProps {
-    modelName: string;
+    modelName: string|undefined;
 }
 
 export function WelcomeScreen({ modelName }: WelcomeScreenProps) {
