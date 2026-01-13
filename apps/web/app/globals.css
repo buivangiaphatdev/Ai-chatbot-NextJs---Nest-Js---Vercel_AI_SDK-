@@ -1,1 +1,95 @@
 @import "tailwindcss";
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
+}
+
+/* Smooth animations */
+@layer utilities {
+    @keyframes slide-in-from-bottom {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes pulse-soft {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    .animate-in {
+        animation: slide-in-from-bottom 0.3s ease-out;
+    }
+
+    .fade-in {
+        animation: fade-in 0.3s ease-out;
+    }
+
+    .pulse-soft {
+        animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+}
+
+/* Selection styles */
+::selection {
+    background-color: rgba(59, 130, 246, 0.5);
+    color: white;
+}
+
+/* Focus styles */
+:focus {
+    outline: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+    @apply transition-colors duration-200;
+}
+
+html {
+    scroll-behavior: smooth;
+}
