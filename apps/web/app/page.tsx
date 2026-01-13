@@ -109,8 +109,7 @@ export default function Home() {
               input={input}
               setInput={setInput}
               sendMessage={(message) => {
-                sendMessage(message);
-                setInput("");
+                sendMessage({ text: message });
               }}
               isLoading={isLoading}
             />
